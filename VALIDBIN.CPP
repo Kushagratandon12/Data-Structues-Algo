@@ -33,25 +33,49 @@
     return (root);
    }
 
+  int check(Node*root)
+  {
+     int min=root->left->data;
+     int max=root->right->data;
+     if(root==NULL || root->left == NULL ||root->right==NULL )
+       return 1;
+     if(min < root->data && max > root->data)
+     {
+
+     return (check(root->left)&& check(root->right));
+
+     }
+     else
+     {
+      return 0;
+     }
+
+ }
 
   void validate(Node * root)
-  {
-   long int min , max;
-   cout<<root->data;
-   cout<<"\nPrimary Root Left Data\n "<<root->left->data;
-   cout<<"\n Primary Root Right Data\n"<<root->right->data;
-   root=root->right;
-   cout<<"\nRight Root Traversal\n";
-   cout<<"\nRight Node LEft Data\n"<<root->left->data;
-   cout<<"\nRight Root Right Data\n"<<root->right->data;
-  }
+ {
+  int a;
+  a=check(root);
+  cout<<a;
+  // cout<<root->data;
+  // cout<<"\nPrimary Root Left Data\n "<<root->left->data;
+  // cout<<"\n Primary Root Right Data\n"<<root->right->data;
+  // root=root->right;
+  // cout<<"\nRight Root Traversal\n";
+  // cout<<"\nRight Node LEft Data\n"<<root->left->data;
+  // cout<<"\nRight Root Right Data\n"<<root->right->data;
+
+
+ }
 
   void main()
   {
   clrscr();
   Node* root = NULL;
   root=insert(root,5);
+  insert(root,3);
   insert(root,1);
+  insert(root,4);
   insert(root,7);
   insert(root,6);
   insert(root,9);
